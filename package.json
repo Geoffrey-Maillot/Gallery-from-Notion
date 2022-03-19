@@ -1,0 +1,37 @@
+{
+  "name": "react-modele",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf dist",
+    "clean:all": "rm -rf dist node_modules yarn.lock package-lock.json"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@parcel/transformer-sass": "^2.3.2",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "parcel": "^2.3.2",
+    "parcel-bundler": "^1.12.5",
+    "prettier": "^2.6.0",
+    "prettier-eslint": "^13.0.0",
+    "sass": "^1.49.9"
+  },
+  "dependencies": {
+    "dotenv-flow": "^3.2.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

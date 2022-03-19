@@ -1,0 +1,8 @@
+{
+  "files.autoSave": "onFocusChange",
+  "eslint.codeActionsOnSave.rules": [],
+  "prettier.useEditorConfig": false,
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "files.autoSaveDelay": 0,
+  "editor.formatOnSave": true
+}
