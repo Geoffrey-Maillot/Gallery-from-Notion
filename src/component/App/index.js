@@ -1,18 +1,29 @@
 // == Import npm
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // == Import
-import reactLogo from './react-logo.svg';
 import './styles.module';
 
+// Hook =>
+import { useFetchImages } from '../hook/useFetchImages';
+
+// Import components =>
+import Gallery from '../Gallery';
+import Header from '../Header';
+
 // == Composant
-const App = () => (
-  <div className="app">
-    <img src={reactLogo} alt="react logo" />
-    <h1>Composant : App</h1>
-    <p>{`${process.env.TEST_ENV}`}</p>
-  </div>
-);
+const App = () => {
+
+  const [images, error, loading, page, setPage] = useFetchImages()
+
+  return (
+    <>
+      <Header />
+      <Gallery />
+      <button onClick={() => setPage(() => page + 1)}>CLick</button>
+    </>
+  )
+};
 
 // == Export
 export default App;

@@ -1,0 +1,34 @@
+.gallery {
+  width: 100%;
+  max-width: 1296px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(var(--col, 3), 1fr);
+  grid-gap: 24px;
+
+  div {
+    display: grid;
+    grid-auto-rows: min-content;
+    grid-gap: 24px;
+  }
+}
+
+img {
+  width: 100%;
+}
+
+/*---------------------------
+      MEDIA QUERRIES
+-------------------------*/
+@media screen and (max-width: 980px) {
+  .gallery {
+    --col: 2;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .gallery {
+    --col: 1;
+  }
+}
