@@ -2,7 +2,9 @@
 import React from 'react';
 
 // == Import
+//import 'semantic-ui-css/semantic.min.css'
 import './styles.module';
+// Sémantic-ui styles
 
 // Import components =>
 import Gallery from '../Gallery';

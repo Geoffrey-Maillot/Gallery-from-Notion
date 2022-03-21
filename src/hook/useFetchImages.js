@@ -17,7 +17,7 @@ export const useFetchImages = () => {
   useEffect(() => {
     setLoading(true)
 
-    fetch(`https://picsum.photos/v2/list?page=${page}&limit=30`, options)
+    fetch(`https://picsuem.photos/v2/list?page=${page}&limit=30`, options)
       .then(response => response.json())
       .then(response => {
         setImages([
@@ -26,8 +26,8 @@ export const useFetchImages = () => {
         ])
       })
       .catch(err => {
-        setError(error)
-        console.log(error)
+        setError(err)
+        console.log(err)
       }).finally(() => setLoading(false));
   }, [page])
 

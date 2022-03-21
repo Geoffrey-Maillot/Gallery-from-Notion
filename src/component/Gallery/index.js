@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
+// => Plugin
+import { Button } from 'semantic-ui-react'
+
 // Hook =>
 import { useFetchImages } from '../../hook/useFetchImages';
-import { useGetWindowWidth } from '../../hook/useGetWindowWidth';
 import { useColumnsNumber } from '../../hook/useColumnsNumber';
 
 // Styles =>
@@ -60,11 +62,12 @@ const Gallery = () => {
 
   if (error)
     return (
-      <p>
+      <p className='error'>
         Nous sommes désolé une erreur s'est produite lors du chargement des
         images
       </p>
     );
+  console.log(error)
   if (loading && page === 1) return <Spinner />;
 
   // Return component =>
@@ -72,9 +75,19 @@ const Gallery = () => {
 
     <main className="gallery" style={{ '--col': columns }}>
       <div className="wrapper">
-        {slicedImages.map((listImages, i) => (<Columns images={listImages} />))}
+        {slicedImages.map((listImages, i) => (<Columns images={listImages} key={i} />))}
       </div>
-      <button onClick={() => setPage(() => page + 1)}>CLick</button>
+      <div className='buttonLoading'>
+        <Button
+          onClick={() => setPage(() => page + 1)}
+          size='medium'
+          loading={loading}
+
+        >
+          Chargez plus de photos
+        </Button>
+      </div>
+
     </main>
   );
 };

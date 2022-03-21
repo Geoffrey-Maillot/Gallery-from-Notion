@@ -1,5 +1,8 @@
 import React from 'react';
 
+// import plugins
+import LazyLoad from 'react-lazyload';
+
 // Styles =>
 import './styles.module.scss';
 
@@ -10,9 +13,11 @@ const Columns = ({ images }) => {
   return (
     <div>
       {images.map((image) => (
-        <figure key={image.id}>
-          <img src={image.download_url} alt="" />
-        </figure>
+        <LazyLoad height={'100%'} key={image.id}>
+          <figure >
+            <img src={image.download_url} alt="" async lazy />
+          </figure>
+        </LazyLoad>
       ))}
 
 
