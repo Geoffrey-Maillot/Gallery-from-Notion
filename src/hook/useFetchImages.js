@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 
 export const useFetchImages = () => {
   const [images, setImages] = useState([]);
@@ -30,6 +30,8 @@ export const useFetchImages = () => {
         console.log(error)
       }).finally(() => setLoading(false));
   }, [page])
+
+
 
   return [images, error, loading, page, setPage]
 }
