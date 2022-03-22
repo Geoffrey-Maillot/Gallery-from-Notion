@@ -4,7 +4,9 @@ import React, { useState, useEffect } from 'react';
 // == Import
 //import 'semantic-ui-css/semantic.min.css'
 import './styles.module';
-// Sémantic-ui styles
+
+// Import Hook
+import { useFetchImages } from '../../hook/useFetchImages';
 
 // Import components =>
 import Gallery from '../Gallery';
@@ -15,6 +17,8 @@ import Modal from '../Modal';
 // == Composant
 const App = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [images, error, loading, page, setPage] = useFetchImages(); //datas images
+  const [displayedImageModal, setDisplayedImageModal] = useState('')
 
   useEffect(() => {
     const body = document.querySelector('body')
@@ -26,13 +30,14 @@ const App = () => {
     }
   }, [modalIsOpen])
 
+
   return (
     <>
       <Header />
-      <Gallery setModalIsOpen={setModalIsOpen} />
+      <Gallery setModalIsOpen={setModalIsOpen} images={images} error={error} loading={loading} page={page} setPage={setPage} setDisplayedImageModal={setDisplayedImageModal} />
       {modalIsOpen && (
         <Modal setModalIsOpen={setModalIsOpen}>
-          <Carroussel setModalIsOpen={setModalIsOpen} />
+          <Carroussel setModalIsOpen={setModalIsOpen} images={images} displayedImageModal={displayedImageModal} setDisplayedImageModal={setDisplayedImageModal} />
         </Modal>
       )}
 

@@ -10,9 +10,12 @@ import './styles.module.scss';
 
 
 // => Component
-const Columns = ({ images, setModalIsOpen }) => {
+const Columns = ({ images, setModalIsOpen, setDisplayedImageModal }) => {
 
-  const onClickOpenModal = () => {
+
+
+  const onClickOpenModal = (e) => {
+    setDisplayedImageModal(e.target.dataset.id)
     setModalIsOpen(true)
   }
   const onKeyDownOpenModal = ({ keyCode }) => {
@@ -25,9 +28,9 @@ const Columns = ({ images, setModalIsOpen }) => {
   return (
     <div className='column'>
       {images.map((image) => (
-        <LazyLoad height={'100%'} key={image.id}>
-          <figure className='item' role="dialog" tabIndex={0} onClick={onClickOpenModal} onKeyDown={(e) => onKeyDownOpenModal(e)}>
-            <img src={image.download_url} alt="" async lazy />
+        <LazyLoad height={'100%'} key={image.properties.Image.files[0].id}>
+          <figure className='item' role="dialog" tabIndex={0} onClick={(e) => onClickOpenModal(e)} onKeyDown={(e) => onKeyDownOpenModal(e)}>
+            <img src={image.properties.Image.files[0].file.url} data-id={image.id} alt="" async lazy="true" />
           </figure>
         </LazyLoad>
       ))}
@@ -37,7 +40,8 @@ const Columns = ({ images, setModalIsOpen }) => {
 
 Columns.propTypes = {
   images: PropTypes.array.isRequired,
-  setModalIsOpen: PropTypes.func.isRequired
+  setModalIsOpen: PropTypes.func.isRequired,
+  setDisplayedImageModal: PropTypes.func.isRequired
 };
 
 

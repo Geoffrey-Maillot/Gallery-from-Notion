@@ -1,18 +1,49 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types';
 
 
 // Import styles =>
 import './styles.modales.scss'
 
-const Carroussel = ({ setModalIsOpen }) => {
+const Carroussel = ({ setModalIsOpen, displayedImageModal, setDisplayedImageModal, images }) => {
+  const [indexImage, setIndexImage] = useState(null) // Index de l'image affiché
+  const [imageToDisplay, setImageToDisplay] = useState(null) // L'id de l'image à afficher
 
+
+  // L'orsque le composant charge, je filtre l'item à afficher dans la modal 
+  //  avec son id récupérer lors du clic sur l'image dans la galerie
+  useEffect(() => {
+    const image = images.find((image, i) => {
+      setIndexImage(i)
+      return image.id === displayedImageModal
+    })
+    setImageToDisplay(image)
+  })
+
+  // Je veux afficher l'image qui se trouve à l'index supérieur ou inférieur
+  const swipeImage = (e) => {
+    // L'index est égal à l'index de l'image actuel + 1 ou -1 
+    // Si on arrive sur l'une des extrémité du tableau, on va directement à l'autre extrémité
+    if (e.target.dataset.id === 'right') {
+      const index = indexImage + 1 === images.length ? 0 : indexImage + 1
+      setDisplayedImageModal(images[index].id)
+
+    }
+    if (e.target.dataset.id === 'left') {
+      const index = indexImage - 1 < 0 ? images.length - 1 : indexImage - 1
+      setDisplayedImageModal(images[index].id)
+    }
+  }
+
+
+  /*
+    Close Modal
+  */
   const onClickCloseModal = () => {
     setModalIsOpen(false)
   }
 
   const onKeyDownCloseModal = ({ keyCode }) => {
-    console.log(keyCode)
     if (keyCode === 27 || keyCode === 13) {
       setModalIsOpen(false)
     }
@@ -23,7 +54,7 @@ const Carroussel = ({ setModalIsOpen }) => {
   return (
     <>
       <div className='carroussel' >
-        <button className='carrousselButton left' > <i className="gg-chevron-left"></i> </button>
+        <button className='carrousselButton left' data-id='left' onClick={(e) => swipeImage(e)}> <i className="gg-chevron-left"></i> </button>
         <div className='carrousselContent'>
           <div className='carrousselHeader'>
             <button className='headerButton'
@@ -46,11 +77,14 @@ const Carroussel = ({ setModalIsOpen }) => {
               Contenu
             </div>
           </div>
-          <figure className='carrousselImage'>
-            <img src={"https://picsum.photos/id/1038/3914/5863"} alt="" async lazy />
-          </figure>
+          {imageToDisplay && (
+            <figure className='carrousselImage'>
+              <img src={imageToDisplay.properties?.Image.files[0].file.url} alt="" async lazy />
+            </figure>
+          )}
+
         </div>
-        <button className='carrousselButton right'><i className="gg-chevron-right"></i></button>
+        <button className='carrousselButton right' data-id='right' onClick={(e) => swipeImage(e)} ><i className="gg-chevron-right"></i></button>
       </div>
     </>
   )
@@ -58,6 +92,9 @@ const Carroussel = ({ setModalIsOpen }) => {
 
 Carroussel.propTypes = {
   setModalIsOpen: PropTypes.func.isRequired,
+  displayedImageModal: PropTypes.string,
+  setDisplayedImageModal: PropTypes.func,
+  images: PropTypes.array,
 };
 
 

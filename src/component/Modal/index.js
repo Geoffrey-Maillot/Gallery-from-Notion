@@ -18,7 +18,6 @@ const Modal = ({ children, setModalIsOpen }) => {
   }, []);
 
   const onKeyDownCloseModal = ({ keyCode }) => {
-    console.log(keyCode)
     if (keyCode === 27) {
       setModalIsOpen(false)
     }
@@ -40,7 +39,7 @@ const Modal = ({ children, setModalIsOpen }) => {
 
 Modal.propTypes = {
   setModalIsOpen: PropTypes.func.isRequired,
-  children: PropTypes.func.isRequired
+  children: PropTypes.object
 };
 
 
