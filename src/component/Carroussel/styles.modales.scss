@@ -1,0 +1,136 @@
+.carroussel {
+  width: 100%;
+  min-height: 100%;
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 50px minmax(0, 1200px) 50px;
+  grid-auto-rows: min-content;
+  justify-content: center;
+}
+
+.carrousselButton {
+  border: none;
+  border-radius: 5px;
+  background-color: rgba($color: #ffffff, $alpha: 0);
+  color: rgba($color: #fff, $alpha: 0.5);
+
+  &:hover {
+    background-color: rgba($color: #ffffff, $alpha: 0.08);
+    color: rgba($color: #fff, $alpha: 0.7);
+  }
+}
+
+.carrousselContent {
+  background-color: #fff;
+  border-radius: 5px;
+  padding-bottom: 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  justify-content: center;
+  grid-template-rows: min-content;
+}
+
+.carrousselHeader {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  align-items: center;
+  padding: 5px;
+}
+
+.headerButton {
+  border: none;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:focus {
+    border: 2px solid black;
+  }
+}
+
+.headerContent {
+  padding: 10px;
+  text-align: center;
+  background-color: red;
+}
+
+.carrousselImage {
+  justify-self: center;
+
+  img {
+    max-height: 80vh;
+  }
+}
+
+// Chevron
+.gg-chevron-right {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs, 1));
+  width: 40px;
+  height: 40px;
+  border: 2px solid transparent;
+  border-radius: 100px;
+}
+.gg-chevron-right::after {
+  content: '';
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-bottom: 4px solid;
+  border-right: 4px solid;
+  transform: rotate(-45deg);
+  right: 12px;
+  top: 5px;
+}
+
+.gg-chevron-left {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs, 1));
+  width: 40px;
+  height: 40px;
+  border: 2px solid transparent;
+  border-radius: 100px;
+}
+.gg-chevron-left::after {
+  content: '';
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-bottom: 4px solid;
+  border-left: 4px solid;
+  transform: rotate(45deg);
+  left: 12px;
+  top: 5px;
+}
+
+/*------------------------------
+      MEDIA QUERRIES
+--------------------------------*/
+
+@media screen and (max-width: 850px) {
+  .carrousselContent {
+    grid-area: 1 / span 3;
+  }
+  .carrousselImage {
+    img {
+      max-height: 100%;
+      max-width: 100%;
+    }
+  }
+  .right {
+    grid-area: 2 / 3;
+  }
+}

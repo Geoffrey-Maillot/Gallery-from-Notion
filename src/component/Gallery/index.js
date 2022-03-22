@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types'
 
 // => Plugin
 import { Button } from 'semantic-ui-react'
@@ -15,7 +16,7 @@ import Spinner from '../Snipper';
 import Columns from './Columns'
 
 // => Component
-const Gallery = () => {
+const Gallery = ({ setModalIsOpen }) => {
 
   const [images, error, loading, page, setPage] = useFetchImages(); //datas images
   const columns = useColumnsNumber(); // nrb of columns
@@ -75,7 +76,7 @@ const Gallery = () => {
 
     <main className="gallery" style={{ '--col': columns }}>
       <div className="wrapper">
-        {slicedImages.map((listImages, i) => (<Columns images={listImages} key={i} />))}
+        {slicedImages.map((listImages, i) => (<Columns setModalIsOpen={setModalIsOpen} images={listImages} key={i} />))}
       </div>
       <div className='buttonLoading'>
         <Button
@@ -91,5 +92,10 @@ const Gallery = () => {
     </main>
   );
 };
+
+Gallery.propTypes = {
+  setModalisOpen: PropTypes.func.isRequired
+};
+
 
 export default Gallery;

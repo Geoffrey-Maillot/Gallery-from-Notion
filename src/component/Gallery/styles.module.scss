@@ -3,23 +3,22 @@
   max-width: 1296px;
   margin: 0 auto;
   padding: 10px;
-
-  .wrapper {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(var(--col, 3), 1fr);
-    grid-gap: 24px;
-
-    div {
-      display: grid;
-      grid-auto-rows: min-content;
-      grid-gap: 24px;
-    }
-  }
 }
 
-img {
+.wrapper {
   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(var(--col, 3), 1fr);
+  grid-gap: 24px;
+}
+.column {
+  display: grid;
+  grid-auto-rows: min-content;
+  grid-gap: 24px;
+}
+
+.item {
+  cursor: pointer;
 }
 
 .buttonLoading {
