@@ -5,11 +5,12 @@ import { useEffect, useState } from "react"
 
 
 export const useFetchImages = () => {
-  const [images, setImages] = useState([]);
-  const [error, setError] = useState(null);
+  const [images, setImages] = useState([]); // list object images
+  const [error, setError] = useState(null); // if error
   const [loading, setLoading] = useState(false);
-  const [page, setPage] = useState(1)
-  const [cursor, setCursor] = useState(undefined)
+  const [page, setPage] = useState(1); // number of page displayed
+  const [cursor, setCursor] = useState(undefined); // id of next page (voir doc Notion pagination)
+  const [hasMore, setHasMore] = useState(null); // if more data to load "True" else "False"
 
   const options = {
     method: 'POST',
@@ -23,7 +24,6 @@ export const useFetchImages = () => {
       'Authorization': `Bearer ${process.env.BEARER_TOKEN_NOTION}`
     },
     body: JSON.stringify({ page_size: 30, start_cursor: cursor }),
-    //mode: 'no-cors',
   };
 
 
@@ -32,9 +32,10 @@ export const useFetchImages = () => {
     if (cursor === null) return
     setLoading(true)
 
-    fetch('https://perso-proxy-server.herokuapp.com/https://api.notion.com/v1/databases/5dd792fe453a4f4cb45ecf1130fb60fd/query', options)
+    fetch('https://perso-proxy-server.herokuapp.com/https://api.notion.com/v1/databases/7336fc7ab28743e1975a0f2c19379d0c/query', options)
       .then(response => response.json())
       .then(response => {
+        setHasMore(response.has_more)
         setCursor(response.next_cursor)
         setImages([
           ...images,
@@ -48,5 +49,5 @@ export const useFetchImages = () => {
 
 
 
-  return [images, error, loading, page, setPage]
+  return [images, error, loading, page, setPage, hasMore]
 }

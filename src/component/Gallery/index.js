@@ -15,7 +15,7 @@ import Spinner from '../Snipper';
 import Columns from './Columns'
 
 // => Component
-const Gallery = ({ setModalIsOpen, images, error, loading, page, setPage, setDisplayedImageModal }) => {
+const Gallery = ({ setModalIsOpen, images, error, loading, page, setPage, setDisplayedImageModal, hasMore }) => {
 
   const columns = useColumnsNumber(); // nrb of columns
   const [slicedImages, setSlicedImages] = useState([])
@@ -76,14 +76,15 @@ const Gallery = ({ setModalIsOpen, images, error, loading, page, setPage, setDis
         {slicedImages.map((listImages, i) => (<Columns setModalIsOpen={setModalIsOpen} setDisplayedImageModal={setDisplayedImageModal} images={listImages} key={i} />))}
       </div>
       <div className='buttonLoading'>
-        <Button
+        {hasMore && <Button
           onClick={() => setPage(() => page + 1)}
           size='medium'
           loading={loading}
 
         >
           Chargez plus de photos
-        </Button>
+        </Button>}
+
       </div>
 
     </main>
@@ -91,13 +92,14 @@ const Gallery = ({ setModalIsOpen, images, error, loading, page, setPage, setDis
 };
 // images, error, loading, page, setPage
 Gallery.propTypes = {
-  setModalisOpen: PropTypes.func.isRequired,
+  setModalIsOpen: PropTypes.func.isRequired,
   images: PropTypes.array.isRequired,
   error: PropTypes.object,
   loading: PropTypes.bool.isRequired,
   page: PropTypes.number.isRequired,
   setPage: PropTypes.func.isRequired,
-  setDisplayedImageModal: PropTypes.func
+  setDisplayedImageModal: PropTypes.func,
+  hasMore: PropTypes.bool,
 };
 
 Gallery.defaultProps = {

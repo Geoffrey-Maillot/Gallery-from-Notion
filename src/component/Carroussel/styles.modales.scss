@@ -26,16 +26,16 @@
   padding-bottom: 40px;
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 20px;
   justify-content: center;
   grid-template-rows: min-content;
 }
 
 .carrousselHeader {
   display: grid;
-  grid-template-columns: 50px 1fr;
+  grid-template-columns: 75px 1fr;
   align-items: center;
-  padding: 5px;
+  justify-items: center;
+  height: 75px;
 }
 
 .headerButton {
@@ -53,18 +53,25 @@
   }
 }
 
-.headerContent {
-  padding: 10px;
-  text-align: center;
-  background-color: red;
-}
-
 .carrousselImage {
   justify-self: center;
 
   img {
     max-height: 80vh;
   }
+}
+
+.author {
+  font-style: italic;
+  margin: 10px;
+  font-size: 0.8em;
+}
+
+.description {
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+  padding: 20px 5px;
 }
 
 // Chevron

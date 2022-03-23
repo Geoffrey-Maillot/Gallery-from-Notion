@@ -12,8 +12,6 @@ import './styles.module.scss';
 // => Component
 const Columns = ({ images, setModalIsOpen, setDisplayedImageModal }) => {
 
-
-
   const onClickOpenModal = (e) => {
     setDisplayedImageModal(e.target.dataset.id)
     setModalIsOpen(true)
@@ -28,9 +26,9 @@ const Columns = ({ images, setModalIsOpen, setDisplayedImageModal }) => {
   return (
     <div className='column'>
       {images.map((image) => (
-        <LazyLoad height={'100%'} key={image.properties.Image.files[0].id}>
+        <LazyLoad height={'100%'} key={image.id}>
           <figure className='item' role="dialog" tabIndex={0} onClick={(e) => onClickOpenModal(e)} onKeyDown={(e) => onKeyDownOpenModal(e)}>
-            <img src={image.properties.Image.files[0].file.url} data-id={image.id} alt="" async lazy="true" />
+            <img src={image.properties?.Image?.files[0]?.external?.url} alt={image.properties?.Categorie?.multi_select[0]?.name} data-id={image.id} async lazy="true" />
           </figure>
         </LazyLoad>
       ))}

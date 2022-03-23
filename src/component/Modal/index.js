@@ -12,10 +12,7 @@ const Modal = ({ children, setModalIsOpen }) => {
   // ce qui permet de parcourir la modal avec la tabulation 
   // Si un élément de la modal doit avoir le focus à l'ouverture (ex: un input) alors on le fait pas.
 
-  const modalElem = useRef(null);
-  useEffect(() => {
-    modalElem.current.focus();
-  }, []);
+ 
 
   const onKeyDownCloseModal = ({ keyCode }) => {
     if (keyCode === 27) {
@@ -31,7 +28,7 @@ const Modal = ({ children, setModalIsOpen }) => {
 
   // Return =>
   return (
-    <div className="modal" ref={modalElem} onKeyDown={(e) => onKeyDownCloseModal(e)} onClick={closeModalOnClick}>
+    <div className="modal" onKeyDown={(e) => onKeyDownCloseModal(e)} onClick={closeModalOnClick}>
       {children}
     </div>
   );

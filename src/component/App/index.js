@@ -17,7 +17,7 @@ import Modal from '../Modal';
 // == Composant
 const App = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
-  const [images, error, loading, page, setPage] = useFetchImages(); //datas images
+  const [images, error, loading, page, setPage, hasMore] = useFetchImages(); //datas images
   const [displayedImageModal, setDisplayedImageModal] = useState('')
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <Gallery setModalIsOpen={setModalIsOpen} images={images} error={error} loading={loading} page={page} setPage={setPage} setDisplayedImageModal={setDisplayedImageModal} />
+      <Gallery setModalIsOpen={setModalIsOpen} images={images} error={error} loading={loading} page={page} setPage={setPage} setDisplayedImageModal={setDisplayedImageModal} hasMore={hasMore} />
       {modalIsOpen && (
         <Modal setModalIsOpen={setModalIsOpen}>
           <Carroussel setModalIsOpen={setModalIsOpen} images={images} displayedImageModal={displayedImageModal} setDisplayedImageModal={setDisplayedImageModal} />
