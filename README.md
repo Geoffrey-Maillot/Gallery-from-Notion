@@ -1,8 +1,8 @@
-# Test de l'api Notion
+# Project Title
 
-## 📖 Nouvelles notions apprises
+This aim of this project is to practice display grid and to connect an application to the Notion Api
 
----
+## 📖 Lesson learned
 
 - Connexion à l'api de Notion
   - [Notion](https://www.notion.so/)
@@ -13,53 +13,75 @@
 
 ## 🛠 Stack
 
-<hr>
-
 - Parcel
 - React
 - sass
 - dotenv-flow
 - eslint (Pas encore configuré)
 - prettier (Pas encore configuré)
+- Netlify function
 
-## Première utilisation
+## Environment variables
 
-<hr>
+To run this project, you will need to add the following environment variables to your .env file
+
+```js
+BEARER_TOKEN_NOTION=
+```
+
+## Website
+
+[Gallery from Notion](https://from-notion-gallery.netlify.app/)
+
+## Run Locally
+
+Clone project
 
 ```bash
-git clone git@github.com:O-clock-Pan/React-modele_parcel.git
+git clone git@github.com:monProjet
+```
 
-cd React-modele_parcel
+Go to folder directory
 
+```bash
+cd monProjet
+```
+
+Install dependencies
+
+```bash
 # yarn
 yarn
 
 # npm
 npm run
+```
 
-# Projet lancer sur http://localhost:1234/
+Start server
+
+```bash
+# yarn
+yarn start
+
+# npm
+npm start
+
+# Projet run on http://localhost:1234/
 ```
 
 ## Script
 
-<hr>
+- `start`: Run server development
+- `build`: Build project in directory `dist`
+- `clean`: Delete directory `dist`
+- `clean:all`: Delete directory `dist`, `nodes_modules` and files `lock`
 
-- `start`: Lancer le serveur de dévelopement
-- `build`: Build le projet dans le dossier `dist`
-- `clean`: Supprime le dossier `dist`
-- `clean:all`: Supprime le dossier `dist` les fichiers `lock` et le fichier `nodes_modules`
+## prerequisites
 
-## Prérequis
-
-<hr>
-
-- **Node**
+- Node.js
 
 ## 🔗 Links
 
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://maillot-geoffrey-portfolio.xyz/)
-
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/geoffrey-maillot-06a1411bb/)
-
-
-// RAjouter les variables d'env
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://maillot-geoffrey-portfolio.xyz/)  
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/geoffrey-maillot-06a1411bb/)  
+[![linkedin](https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logocolor=white)](https://github.com/Geoffrey-Maillot/)

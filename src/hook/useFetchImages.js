@@ -14,7 +14,6 @@ export const useFetchImages = () => {
   const [hasMore, setHasMore] = useState(null); // if more data to load "True" else "False"
 
 
-
   useEffect(() => {
     // Si je n'ai plus de page à charger ne rien faire
     if (cursor === null) return
@@ -37,8 +36,6 @@ export const useFetchImages = () => {
       .finally(() => setLoading(false))
 
   }, [page])
-
-
 
   return [images, error, loading, page, setPage, hasMore]
 }
