@@ -30,6 +30,7 @@
     "sass": "^1.49.9"
   },
   "dependencies": {
+    "axios": "^0.26.1",
     "dotenv-flow": "^3.2.0",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
