@@ -17,47 +17,39 @@ import Columns from './Columns'
 // => Component
 const Gallery = ({ setModalIsOpen, images, error, loading, page, setPage, setDisplayedImageModal, hasMore }) => {
 
+  /**
+   * Distribute the list of object between several array
+   * @param {number} nbColumn Number of column displayed
+   * @returns {array} 
+   */
+  const distributeArray = (nbColumn = 1) => {
+    let count = 0; // Count for know in which array push the object
+    const columns = []; // Array who contain 1, 2 or 3 array depending of "nbColumn"
+
+    // Create array in "columns" depending "nbColumn"
+    for (let i = 1; i <= nbColumn; i++) {
+      columns.push([]);
+    };
+
+    // Push alternately each object "image" in each array in who are in "column"
+    images.forEach((image) => {
+      count = count === nbColumn ? 0 : count
+      columns[count].push(image);
+      count++
+    })
+
+    return columns
+  }
+
   const columns = useColumnsNumber(); // nrb of columns
   const [slicedImages, setSlicedImages] = useState([])
 
-  // Je veux diviser mon tableau original en sous tableau en fonction du nombre de colones
-  // Ensuite je distribue chaque tableau à chaque colonne
-  // ex: => 
-  // [30] => [[10], [10], [10]] // 3 colonnes affichées
-  // [30] => [[15], [15]] // 2 colonnes affichées
-  // [30] => [[30]] => 1 colonne affichée
   useEffect(() => {
-    const totalImages = images.length
-    const imagesPerColumns = totalImages / columns
 
-    if (columns === 1) {
-      setSlicedImages([images])
-    }
-
-    if (columns === 2) {
-      const firstColumn = images.slice(0, Math.ceil(imagesPerColumns));
-      const secondColumn = images.slice(Math.ceil(imagesPerColumns), images.length)
-
-      setSlicedImages([
-        firstColumn,
-        secondColumn
-      ])
-    }
-
-    if (columns === 3) {
-      const firstColumn = images.slice(0, Math.ceil(imagesPerColumns));
-      const secondColumn = images.slice(Math.ceil(imagesPerColumns), Math.ceil(imagesPerColumns) + Math.floor(imagesPerColumns))
-      const thirdColumn = images.slice(- Math.floor(imagesPerColumns), images.length)
-
-      setSlicedImages([
-        firstColumn,
-        secondColumn,
-        thirdColumn
-      ])
-    }
-
+    setSlicedImages(distributeArray(columns))
 
   }, [images, columns])
+
 
   if (error)
     return (
@@ -90,7 +82,6 @@ const Gallery = ({ setModalIsOpen, images, error, loading, page, setPage, setDis
     </main>
   );
 };
-// images, error, loading, page, setPage
 Gallery.propTypes = {
   setModalIsOpen: PropTypes.func.isRequired,
   images: PropTypes.array.isRequired,

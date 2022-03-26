@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import plugins
-import LazyLoad from 'react-lazyload';
-
 // Styles =>
 import './styles.module.scss';
 
@@ -25,24 +22,21 @@ const Columns = ({ images, setModalIsOpen, setDisplayedImageModal }) => {
   return (
     <div className="column">
       {images.map((image) => (
-        <LazyLoad height={'100%'} key={image.id}>
-          <figure
-            className="item"
-            role="dialog"
-            tabIndex={0}
-            onClick={(e) => onClickOpenModal(e)}
-            onKeyDown={(e) => onKeyDownOpenModal(e)}
+        <figure
+          className="item"
+          role="dialog"
+          tabIndex={0}
+          onClick={(e) => onClickOpenModal(e)}
+          onKeyDown={(e) => onKeyDownOpenModal(e)}
+          data-id={image.id}
+          key={image.id}
+        >
+          <img
+            src={image.properties?.Image?.files[0]?.external?.url}
+            alt={image.properties?.Categorie?.multi_select[0]?.name}
             data-id={image.id}
-          >
-            <img
-              src={image.properties?.Image?.files[0]?.external?.url}
-              alt={image.properties?.Categorie?.multi_select[0]?.name}
-              data-id={image.id}
-              async
-              lazy="true"
-            />
-          </figure>
-        </LazyLoad>
+          />
+        </figure>
       ))}
     </div>
   );
