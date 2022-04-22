@@ -1,6 +1,6 @@
 # Project Title
 
-This aim of this project is to practice display grid and to connect an application to the Notion Api
+This aim of this project is to practice the display grid and to connect an application with the Notion Api
 
 ## 📖 Lesson learned
 
